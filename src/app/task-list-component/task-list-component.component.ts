@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskListComponentComponent implements OnInit {
 
+  pageTitle: string = 'This is the pageTitle from task-list-component.';
+  
   constructor() { }
 
   ngOnInit(): void {
