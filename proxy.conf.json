@@ -1,6 +1,6 @@
 {
-    "/messages": {
-      "target": "http://localhost:8080",
+    "/messages/*": {
+      "target": "https://spring-boot-playground-mysql-jolguo2gba-ey.a.run.app/",
       "secure": false,
       "logLevel": "debug",
       "changeOrigin": true

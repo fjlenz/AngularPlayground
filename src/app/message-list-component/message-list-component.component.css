@@ -36,3 +36,7 @@ table {
 .mat-column-created {
   max-width: 124px;
 }
+
+mat-slider {
+  width: 300px;
+}
