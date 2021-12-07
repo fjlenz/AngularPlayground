@@ -1,0 +1,83 @@
+<mat-card>
+    <mat-card-title>{{pageTitle}}</mat-card-title>
+
+    <mat-card-subtitle>
+        <div>
+            Loads /messages from my beloved Spring Boot backend
+        </div>
+    </mat-card-subtitle>
+
+    <mat-card-subtitle>
+        <div>
+            <div>
+                <mat-slide-toggle [(ngModel)]="callApiWithDelayWanted">Call API with delay </mat-slide-toggle>
+            </div>
+            <div>
+                <mat-slider *ngIf="callApiWithDelayWanted" thumbLabel [(ngModel)]="delaySecondsOnSlider"
+                    [displayWith]="formatSliderLabel" tickInterval="1" step="1" min="0" max="10" aria-label="units">
+                </mat-slider>
+            </div>
+
+        </div>
+    </mat-card-subtitle>
+
+
+    <mat-card-subtitle>
+        <div>
+            <button mat-button (click)="toggleIDColumn()">
+                {{ showIDColumn? "Hide" : "Show" }} Id
+            </button>
+            <button mat-button (click)="retrieveMessagesfromApi()">
+                <mat-icon>refresh</mat-icon>
+            </button>
+            <button mat-button (click)="addMessageviaApi()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </mat-card-subtitle>
+
+
+    <mat-card>
+        <div class="example-container mat-elevation-z8">
+            <div>
+                <mat-progress-bar mode="indeterminate" *ngIf="showProgressBar"></mat-progress-bar>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th *ngIf="showIDColumn">Message-ID</th>
+                        <th>Message</th>
+                        <th>Rating</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let message of messages">
+                        <td class=left valign="middle" *ngIf="showIDColumn">{{message.id}}</td>
+                        <td valign="middle">{{message.message}}</td>
+                        <td valign="middle">
+                            <star-viewer [starRating]="message.rating">
+                            </star-viewer>
+                        </td>
+
+                        <td>
+                            <button mat-button [routerLink]="['/message-detail', message.id]">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                        </td>
+                        <td>
+                            <button mat-button (click)="deleteMessageviaApi(message)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </mat-card>
+
+</mat-card>

@@ -1,0 +1,58 @@
+<mat-card *ngIf="message">
+
+    <mat-card-title>Message Detail Component</mat-card-title>
+
+    <mat-card-subtitle>
+        <div>
+            Loads single message from (/message/:id) from my beloved Spring Boot backend
+        </div>
+    </mat-card-subtitle>
+
+    <div class="example-container mat-elevation-z8">
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>ID:</td>
+                    <td>{{message.id}}</td>
+                </tr>
+                <tr>
+                    <td>Message: </td>
+                    <td>{{message.message}}</td>
+                </tr>
+                <tr>
+                    <td>Rating: </td>
+                    <td>{{message.rating}}</td>
+                </tr>
+                <tr>
+                    <td>Start Rating: </td>
+                    <td><star-viewer [starRating]="message.rating"></star-viewer></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Message for PUT call</mat-label>
+            <input [(ngModel)]="message.message" matInput type="text" matInput
+                placeholder="Place your message here ....">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Rating for PUT call</mat-label>
+            <input [(ngModel)]="message.rating" matInput type="number" matInput
+                placeholder="Place your rating here ....">
+        </mat-form-field>
+    </div>
+
+    <mat-card-actions>
+        <button mat-button (click)="onGoingBack()">Go back</button>
+        <button mat-button (click)="updateMessageviaApi()">
+            <mat-icon>save</mat-icon>
+        </button>
+    </mat-card-actions>
+
+</mat-card>

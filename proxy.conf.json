@@ -1,8 +1,14 @@
 {
-    "/messages/*": {
-      "target": "https://spring-boot-playground-mysql-jolguo2gba-ey.a.run.app/",
-      "secure": false,
-      "logLevel": "debug",
-      "changeOrigin": true
-    }
+  "/messages/**": {
+    "target": "https://spring-boot-playground-datastore-jolguo2gba-lm.a.run.app/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/message/**": {
+    "target": "https://spring-boot-playground-datastore-jolguo2gba-lm.a.run.app/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
   }
+}

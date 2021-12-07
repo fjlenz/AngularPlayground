@@ -1,3 +1,23 @@
-<div>
-  <message-list-component></message-list-component>
-</div>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div>
+      <button [routerLink]="['/message-list']" mat-button>MessageTable ngFor</button>
+    </div>
+    <div>
+      <button [routerLink]="['/message-list-mat']" mat-button>MessageTable matTable</button>
+    </div>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Navigation Toggle
+    </button>
+
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</mat-drawer-container>
