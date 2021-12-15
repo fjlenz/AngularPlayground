@@ -63,14 +63,16 @@
                         </td>
 
                         <td>
-                            <button mat-button [routerLink]="['/message-detail', message.id]">
+                            <button mat-icon-button color="primary" [routerLink]="['/message-detail', message.id]">
                                 <mat-icon>edit</mat-icon>
                             </button>
                         </td>
-                        <td>
-                            <button mat-button (click)="deleteMessageviaApi(message)">
+                        <td valign="middle">
+
+                            <button *ngIf="!message.showDeletionSpinner" mat-icon-button color="primary" (click)="deleteMessageviaApi(message)">
                                 <mat-icon>delete</mat-icon>
                             </button>
+                            <mat-spinner *ngIf="message.showDeletionSpinner" diameter="20"></mat-spinner>
                         </td>
                     </tr>
                 </tbody>

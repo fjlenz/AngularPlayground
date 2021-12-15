@@ -64,17 +64,18 @@ export class MessageListComponent implements OnInit {
   }
 
   deleteMessageviaApi(message: IMessage) {
-    this.showProgressBar = true;
 
-    console.log("Message that is currently in inputbox: " + message.id);
+    message.showDeletionSpinner = true;
+
+    console.log("Message that is currently in input box: " + message.id);
 
     this.messageService.deleteSingleMessage(message).subscribe({
       complete: () => {
 
-        // relaod messages from API
-        this.retrieveMessagesfromApi();
+        message.showDeletionSpinner = false;
 
-        this.showProgressBar = false;
+         // relaod messages from API
+        this.retrieveMessagesfromApi();
       },
       error: err => {
         console.log("Error on Serv. call - says ERROR Lifecycle Hook: " + err);
@@ -90,7 +91,7 @@ export class MessageListComponent implements OnInit {
 
     const dialogRef = this.dialog.open(MessageCreationDialogComponent, {
       width: '250px',
-      data: { message: messageFromDialog, rating: ratingFromDialog},
+      data: { message: messageFromDialog, rating: ratingFromDialog },
     });
 
     dialogRef.afterClosed().subscribe(messageResultfromDialog => {
@@ -101,7 +102,7 @@ export class MessageListComponent implements OnInit {
 
       this.showProgressBar = true;
 
-      let messageforPersist: IMessage = <IMessage>{ message: messageFromDialog, rating: ratingFromDialog  };
+      let messageforPersist: IMessage = <IMessage>{ message: messageFromDialog, rating: ratingFromDialog };
 
       console.log("Message for Perists: " + messageforPersist.message + " " + messageforPersist.rating);
 

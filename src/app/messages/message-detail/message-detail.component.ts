@@ -12,6 +12,7 @@ import { MessageService } from '../message.service';
 
 export class MessageDetailComponent implements OnInit {
 
+  showProgressBar: boolean = false;
   message: IMessage = <IMessage>{};
 
   constructor(private messageService: MessageService, private snackBar: MatSnackBar,
@@ -38,6 +39,8 @@ export class MessageDetailComponent implements OnInit {
   }
 
   retrieveSingleMessagesfromApi(): void {
+    this.showProgressBar = true;
+
     // read ID that is handed over via Route
     const messageIdWanted = Number(this.route.snapshot.paramMap.get("id"));
 
@@ -45,6 +48,7 @@ export class MessageDetailComponent implements OnInit {
     this.messageService.getSingleMessage(messageIdWanted).subscribe({
       next: message => this.message = message,
       complete: () => {
+        this.showProgressBar = false;
         console.log("Completed retrieval of Message ID: " + messageIdWanted, "Complete");
       },
       error: err => {
