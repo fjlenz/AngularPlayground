@@ -10,10 +10,10 @@
     <mat-card-subtitle>
         <div>
             <div>
-                <mat-slide-toggle [(ngModel)]="callApiWithDelayWanted">Call API with delay </mat-slide-toggle>
+                <mat-slide-toggle color="primary" [(ngModel)]="callApiWithDelayWanted">Call API with delay </mat-slide-toggle>
             </div>
             <div>
-                <mat-slider *ngIf="callApiWithDelayWanted" thumbLabel [(ngModel)]="delaySecondsOnSlider"
+                <mat-slider color="primary" *ngIf="callApiWithDelayWanted" thumbLabel [(ngModel)]="delaySecondsOnSlider"
                     [displayWith]="formatSliderLabel" tickInterval="1" step="1" min="0" max="10" aria-label="units">
                 </mat-slider>
             </div>
