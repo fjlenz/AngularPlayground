@@ -16,6 +16,6 @@ COPY /nginx-custom.conf /etc/nginx/conf.d/default.conf
 
 # 1 Build docker image locally with DockerFile: Right Click Dockerfile in VS Code and BUILD
 # 2 check if image got created: docker images
-# 3 Push to Google-Container-Registry (GCR): docker push gcr.io/projectfj/angular-playground-app:1.1.9
+# 3 Push to Google-Container-Registry (GCR): docker push gcr.io/projectfj/angular-playground-app:1.2.1
 # 4 manually deploy image from GCR inside Google console to Google Cloud Run
 # https://medium.com/@vishal.sharma./dockerizing-angular-app-using-docker-multi-stage-build-d9151441f2c4
